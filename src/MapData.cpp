@@ -19,7 +19,7 @@ MapData::MapData(const std::string &fileName) {
     urCoord = Coord(y_ur, x_ur);
 
     /* 30 meters in 1 arc-second, 3600 arc-seconds in 1 degree */
-    data_separation = cellSize * 3600 * 30;
+    data_separation = cellSize * DEG_TO_METERS;
 
     map = std::vector<std::vector<double>>(rows, std::vector<double>(cols));
 
@@ -40,7 +40,7 @@ MapData::MapData(const std::string &fileName) {
     fin.close();
 }
 
-std::pair<int, int> MapData::closestDataPoint(const Coord &coord) {
+std::pair<int, int> MapData::closestDataPoint(const Coord &coord) const {
     return std::make_pair(
         std::round((coord.longitude - x_ll) / cellSize),
         std::round((y_ur - coord.latitude) / cellSize)

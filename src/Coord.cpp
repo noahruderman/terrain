@@ -16,9 +16,9 @@ Coord::Coord(const Coord &other) {
     longitudeDir = (longitude >= 0) ? 'E' : 'W';
 }
 
-Coord::Coord(const double y, const double x) {
-    latitude = y;
-    longitude = x;
+Coord::Coord(double lat, double lon) {
+    latitude = lat;
+    longitude = lon;
 
     latitudeDir = (latitude >= 0) ? 'N' : 'S';
     longitudeDir = (longitude >= 0) ? 'E' : 'W';

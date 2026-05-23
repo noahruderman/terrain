@@ -11,6 +11,6 @@ public:
 
     Coord(const Coord &other);
 
-    /* y=Latitude, x=Longitude */
-    Coord(const double y, const double x);
+    /* lat=Latitude, lon=Longitude */
+    Coord(double lat, double lon);
 };

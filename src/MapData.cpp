@@ -21,15 +21,13 @@ MapData::MapData(const std::string &fileName) {
     /* 30 meters in 1 arc-second, 3600 arc-seconds in 1 degree */
     data_separation = cellSize * 3600 * 30;
 
-    map = std::vector<std::vector<double>>(rows);
+    map = std::vector<std::vector<double>>(rows, std::vector<double>(cols));
 
     isMissingData = false;
-    for (int i = 0; i < rows; i++) {
-        map[i] = std::vector<double>(cols);
-
-        for (int j = 0; j < cols; j++) {
-            fin >> map[i][j];
-            if (map[i][j] == NO_DATA_VALUE) {
+    for (auto &row : map) {
+        for (auto &point : row) {
+            fin >> point;
+            if (point == NO_DATA_VALUE) {
                 isMissingData = true;
             }
         }

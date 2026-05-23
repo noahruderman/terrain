@@ -1,5 +1,5 @@
-#include <vector>
 #include "Coord.h"
+#include <vector>
 
 #pragma once
 
@@ -18,7 +18,7 @@ public:
 
     bool isMissingData;
 
-    /* 30 meters in 1 arc-second, 3600 arc-seconds in 1 degree */
+    /* Separation between points in meters */
     double data_separation;
 
     MapData(const std::string &fileName);

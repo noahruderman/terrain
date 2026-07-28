@@ -9,7 +9,7 @@ public:
 
     Coord();
 
-    Coord(const Coord &other);
+    Coord(const Coord&);
 
     /* lat=Latitude, lon=Longitude */
     Coord(double lat, double lon);

@@ -32,11 +32,11 @@ int main(int argc, char **argv) {
     std::cout << "Upper Right: " << map.urCoord << "\n\n";
 
     auto initialCoord = promptCoord();
-    std::pair<int,int> closest = map.closestDataPoint(initialCoord);
+    auto closest = map.closestDataPoint(initialCoord);
     std::cout << "closest coords: " << map.toCoordinate(closest) << "\nh=" << map.get(closest) << "\n\n";
 
     std::vector<double> dirs;
-    for (double i = 0; i < 360; i += .5) {
+    for (double i{0}; i < 360; i += .5) {
         dirs.push_back(i * std::numbers::pi / 180);
     }
 
@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
     std::vector<std::vector<Coord>> positions(dirs.size());
     std::vector<std::vector<double>> heightLine(dirs.size());
 
-    for (int i = 0; i < dirs.size(); i++) {
+    for (size_t i{0}; i < dirs.size(); i++) {
         deltas[i] = {cos(dirs[i]) * map.cellSize / 2, sin(dirs[i]) * map.cellSize / 2};
         Coord currCoord {initialCoord};
 
@@ -64,10 +64,10 @@ int main(int argc, char **argv) {
             currCoord.latitude += deltas[i].second;
         }
 
-        double largestAngle = 0;
-        double la_dist = 0;
-        int largestAngleIndex = 0;
-        for (int j = 1; j < positions[i].size(); j++) {
+        double largestAngle{0};
+        double la_dist{0};
+        size_t largestAngleIndex{0};
+        for (size_t j = 1; j < positions[i].size(); j++) {
             double deltaX = (positions[i][j].longitude - initialCoord.longitude) * MapData::DEG_TO_METERS;
             double deltaY = (positions[i][j].latitude - initialCoord.latitude) * MapData::DEG_TO_METERS;
             double deltaHeight = heightLine[i][j] - heightLine[i][0];

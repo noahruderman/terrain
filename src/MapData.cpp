@@ -40,7 +40,7 @@ MapData::MapData(const std::string &fileName) {
     fin.close();
 }
 
-std::pair<int, int> MapData::closestDataPoint(const Coord &coord) const {
+std::pair<size_t, size_t> MapData::closestDataPoint(const Coord &coord) const {
     return std::make_pair(
         std::round((coord.longitude - x_ll) / cellSize),
         std::round((y_ur - coord.latitude) / cellSize)

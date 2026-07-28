@@ -25,21 +25,21 @@ public:
 
     MapData(const std::string &fileName);
 
-    double get(const std::pair<int,int> &position) const {
+    double get(const std::pair<size_t,size_t> &position) const {
         return get(position.first, position.second);
     }
 
-    double get(int x, int y) const {
+    double get(size_t x, size_t y) const {
         return map.at(y).at(x);
     }
 
-    Coord toCoordinate(const std::pair<int, int> &position) const {
+    Coord toCoordinate(const std::pair<size_t, size_t> &position) const {
         return toCoordinate(position.first, position.second);
     }
 
-    Coord toCoordinate(int x, int y) const {
+    Coord toCoordinate(size_t x, size_t y) const {
         return Coord(y_ur - cellSize * y, x_ll + cellSize * x);
     }
 
-    std::pair<int, int> closestDataPoint(const Coord &coord) const;
+    std::pair<size_t, size_t> closestDataPoint(const Coord &coord) const;
 };

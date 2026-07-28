@@ -1,4 +1,3 @@
-// Data from https://portal.opentopography.org/apidocs/#/Public/getUsgsDem
 #include <cmath>
 #include <format>
 #include <iostream>
